@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nosotros ✦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#b833b1;--rose-lt:#2a002a;--rose-dk:#e0a0e0;
+  --cream:#000000;--ink:#fffdfd;--muted:#a09898;--border:#333;--card:#111;
+  --purple:#A87BAF;
+  --fd:'Lora',Georgia,serif;--fb:'Inter',system-ui,sans-serif;
+}
+html{font-size:16px}
+body{background:var(--cream);color:var(--ink);font-family:var(--fb);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+
+header{text-align:center;padding:2.5rem 1rem 1.5rem;width:100%}
+.ornament{font-size:1.1rem;color:var(--rose);letter-spacing:.5rem;display:block;margin-bottom:.5rem}
+header h1{font-family:var(--fd);font-size:clamp(1.9rem,5vw,2.7rem);font-weight:600;letter-spacing:-.02em}
+header p{margin-top:.35rem;font-size:.83rem;color:var(--muted);font-weight:300;letter-spacing:.06em}
+
+.sync-bar{width:100%;max-width:620px;padding:0 1.25rem;margin-bottom:.6rem}
+.sync-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;padding:.3rem .75rem;border-radius:99px;border:1px solid var(--border);color:var(--muted);background:var(--card)}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:#555;flex-shrink:0}
+.sync-pill.connected .sync-dot{background:#4caf50;box-shadow:0 0 6px #4caf5088}
+.sync-pill.connected{color:#4caf50;border-color:#4caf5044}
+.sync-pill.error .sync-dot{background:#e57373}
+.sync-pill.error{color:#e57373;border-color:#e5737344}
+
+main{width:100%;max-width:620px;padding:0 1.25rem 5rem}
+
+.who-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.who-label{font-size:.73rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;flex-shrink:0}
+.who-btns{display:flex;gap:.5rem}
+.who-btn{font-family:var(--fb);font-size:.82rem;font-weight:500;cursor:pointer;border:1px solid var(--border);border-radius:8px;padding:.38rem .9rem;background:transparent;color:var(--muted);transition:all .15s}
+.who-btn.active-Melissa{background:var(--rose);color:#fff;border-color:var(--rose)}
+.who-btn.active-david{background:var(--purple);color:#fff;border-color:var(--purple)}
+.who-btn:hover{opacity:.85}
+
+.know-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.5rem 1.2rem;margin-bottom:1.2rem;position:relative;overflow:hidden}
+.know-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--purple))}
+.know-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:.8rem}
+.know-label{font-size:.71rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:500;margin-bottom:.2rem}
+.know-phrase{font-family:var(--fd);font-style:italic;font-size:.93rem;color:var(--ink)}
+.know-pct{font-family:var(--fd);font-size:2.8rem;font-weight:600;color:var(--rose);line-height:1}
+.know-pct span{font-size:1rem;color:var(--muted)}
+.track{height:6px;background:#1a001a;border-radius:99px;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--purple));border-radius:99px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+.know-sub{margin-top:.5rem;font-size:.74rem;color:var(--muted);display:flex;justify-content:space-between}
+
+.timer-row{display:flex;align-items:center;gap:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;margin-bottom:1.2rem}
+.timer-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:500;white-space:nowrap}
+.t-track{flex:1;height:4px;background:#1a001a;border-radius:99px;overflow:hidden}
+.t-fill{height:100%;background:var(--rose);border-radius:99px;transition:width .5s}
+.timer-val{font-family:var(--fd);font-size:.93rem;color:var(--rose);font-weight:600;min-width:68px;text-align:right}
+
+.q-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem 1.6rem 1.5rem;margin-bottom:1.1rem;position:relative;overflow:hidden}
+.q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--purple))}
+.q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.q-num{font-size:.72rem;color:var(--rose);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.q-tag{font-size:.7rem;background:var(--rose-lt);color:var(--rose-dk);padding:.2rem .65rem;border-radius:99px;font-weight:500;border:1px solid #3a003a}
+.q-text{font-family:var(--fd);font-size:clamp(1.12rem,3vw,1.38rem);line-height:1.62;color:var(--ink)}
+
+.ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem}
+@media(max-width:460px){.ans-grid{grid-template-columns:1fr}}
+.ans-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem .95rem;transition:border-color .2s}
+.ans-card.mine{border-color:var(--rose)}
+.ans-card.theirs{border-color:var(--purple)}
+.ans-who{font-size:.69rem;font-weight:500;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.35rem}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--rose);display:inline-block;flex-shrink:0}
+.dot.b{background:var(--purple)}
+textarea{width:100%;min-height:80px;resize:vertical;border:1px solid var(--border);border-radius:8px;padding:.55rem .72rem;font-family:var(--fb);font-size:.87rem;color:var(--ink);background:#0a000a;line-height:1.5;outline:none;transition:border-color .15s}
+textarea:focus{border-color:var(--rose)}
+.their-answer{min-height:60px;font-size:.87rem;color:var(--muted);line-height:1.55;font-style:italic;padding:.4rem 0}
+.their-answer.empty{color:#444;font-size:.8rem}
+
+.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+button{font-family:var(--fb);font-size:.84rem;font-weight:500;cursor:pointer;border:none;border-radius:8px;padding:.55rem 1.1rem;transition:opacity .15s,transform .1s}
+button:active{transform:scale(.97)}
+.btn-p{background:var(--rose);color:#fff}
+.btn-p:hover{opacity:.87}
+.btn-s{background:var(--rose-lt);color:var(--rose-dk)}
+.btn-s:hover{opacity:.8}
+
+.hist-title{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.hist-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.hist-item{border-left:2px solid var(--border);padding:.65rem .9rem;margin-bottom:.7rem;position:relative}
+.hist-item::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--rose-lt);border:2px solid var(--rose);position:absolute;left:-5px;top:.8rem}
+.hist-q{font-family:var(--fd);font-style:italic;font-size:.87rem;color:var(--ink);margin-bottom:.28rem}
+.hist-ans{font-size:.79rem;color:var(--muted);line-height:1.65}
+.hist-ans b{color:var(--ink)}
+.hist-meta{font-size:.68rem;color:#444;margin-top:.25rem}
+
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(14px);background:#222;color:#fff;border:1px solid var(--border);padding:.58rem 1.1rem;border-radius:99px;font-size:.82rem;opacity:0;transition:all .28s;pointer-events:none;z-index:200;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="ornament">✦Melissa y David✦</span>
+  <h1>Nosotros</h1>
+  <p>preguntas para conocernos de verdad</p>
+</header>
+
+<div class="sync-bar">
+  <span class="sync-pill" id="sync-pill">
+    <span class="sync-dot"></span>
+    <span id="sync-txt">Conectando…</span>
+  </span>
+</div>
+
+<main>
+
+  <div class="who-card">
+    <span class="who-label">¿Quién eres?</span>
+    <div class="who-btns">
+      <button class="who-btn" id="btn-Melissa"  onclick="setWho('Melissa')">💜 Melissa</button>
+      <button class="who-btn" id="btn-david" onclick="setWho('david')">🖤 David</button>
+    </div>
+    <span style="font-size:.75rem;color:var(--muted);margin-left:auto" id="who-status"></span>
+  </div>
+
+  <div class="know-card">
+    <div class="know-top">
+      <div>
+        <div class="know-label">¿Cuánto nos conocemos?</div>
+        <div class="know-phrase" id="know-phrase">Apenas comenzamos…</div>
+      </div>
+      <div class="know-pct" id="know-pct">0<span>%</span></div>
+    </div>
+    <div class="track"><div class="fill" id="know-fill" style="width:0%"></div></div>
+    <div class="know-sub">
+      <span id="know-ans">0 preguntas respondidas</span>
+      <span id="know-rem">100 restantes</span>
+    </div>
+  </div>
+
+  <div class="timer-row">
+    <span class="timer-label">Próxima en</span>
+    <div class="t-track"><div class="t-fill" id="t-fill"></div></div>
+    <span class="timer-val" id="t-val">--:--:--</span>
+  </div>
+
+  <div class="q-card">
+    <div class="q-meta">
+      <span class="q-num" id="q-num">Pregunta #1 de 100</span>
+      <span class="q-tag" id="q-tag"></span>
+    </div>
+    <div class="q-text" id="q-text">Conectando…</div>
+  </div>
+
+  <div class="ans-grid">
+    <div class="ans-card" id="card-Melissa">
+      <div class="ans-who"><span class="dot"></span> Melissa</div>
+      <div id="Melissa-wrap"></div>
+    </div>
+    <div class="ans-card" id="card-david">
+      <div class="ans-who"><span class="dot b"></span> David</div>
+      <div id="david-wrap"></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-p" onclick="save()">Guardar mi respuesta</button>
+    <button class="btn-s" onclick="skip()">Siguiente pregunta</button>
+  </div>
+
+  <div id="hist-sec" style="display:none">
+    <div class="hist-title">Nuestro historial</div>
+    <div id="hist-list"></div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { initializeApp }                            from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, onValue }           from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+// ── CONFIG — URL fija, no necesitan configurar nada ──
+const DB_URL = "https://melissa-39fff-default-rtdb.firebaseio.com/";
+const INTERVAL = 12 * 60 * 60 * 1000;
+
+const QS = [
+  {q:"¿Cuál es el recuerdo más vívido de tu infancia que todavía puedes sentir con todos los sentidos?",c:"Infancia"},
+  {q:"¿Hubo un momento en tu niñez en que te sentiste completamente solo/a? ¿Cómo lo superaste?",c:"Infancia"},
+  {q:"¿A qué lugar de tu infancia volverías ahora mismo si pudieras, y qué harías ahí?",c:"Infancia"},
+  {q:"¿Qué versión de ti mismo/a de la infancia sientes que extrañas más?",c:"Infancia"},
+  {q:"¿Cuál fue el primer momento en que entendiste que el mundo no era tan justo como pensabas?",c:"Infancia"},
+  {q:"¿Qué juego o actividad de tu niñez te hacía perder completamente la noción del tiempo?",c:"Infancia"},
+  {q:"¿Hubo algo que de niño/a juraste nunca hacer igual que tus padres… y luego lo hiciste de todas formas?",c:"Infancia"},
+  {q:"¿Cuál era tu mayor miedo cuando eras pequeño/a y cómo lo enfrentabas?",c:"Infancia"},
+  {q:"¿Qué aprendiste de tus padres que nunca te enseñaron con palabras, solo con su ejemplo?",c:"Familia"},
+  {q:"¿Cuál es la cosa más valiosa que te dieron tus abuelos o una figura mayor en tu vida?",c:"Familia"},
+  {q:"¿Qué patrón de tu familia de origen sientes que estás repitiendo sin querer?",c:"Familia"},
+  {q:"¿Cuál es la historia de tu familia que más te ha marcado aunque no la hayas vivido directamente?",c:"Familia"},
+  {q:"¿Cómo quieres que sea la familia que construyas — en qué se parece y en qué es diferente a la que tuviste?",c:"Familia"},
+  {q:"¿Hay algo que nunca le dijiste a alguien de tu familia y desearías haberlo hecho?",c:"Familia"},
+  {q:"¿Cuál es el mejor consejo que te dio alguien de tu familia y cuánto tardaste en tomarlo en serio?",c:"Familia"},
+  {q:"¿Hay algo de tu cultura o familia que rechazaste de joven y ahora valoras?",c:"Familia"},
+  {q:"¿Cuál es el miedo que nunca le has contado a nadie porque te parece demasiado ridículo o profundo?",c:"Miedos"},
+  {q:"¿Qué situación te hace sentir más vulnerable y cómo reaccionas cuando estás ahí?",c:"Miedos"},
+  {q:"¿Hay algo en lo que tienes miedo de decepcionar a las personas que amas?",c:"Miedos"},
+  {q:"¿Qué es lo que más miedo te da de envejecer?",c:"Miedos"},
+  {q:"¿Cuándo fue la última vez que hiciste algo sabiendo que tenías miedo, y lo hiciste de todas formas?",c:"Miedos"},
+  {q:"¿Cuál es tu mayor miedo sobre el futuro?",c:"Miedos"},
+  {q:"¿En qué momento de tu vida más necesitaste a alguien que no estaba?",c:"Miedos"},
+  {q:"¿Hay algo en ti mismo/a que te da miedo mostrar porque temes que la gente te vea diferente?",c:"Miedos"},
+  {q:"¿Cuándo fue la primera vez que pensaste que yo podría ser importante en tu vida?",c:"Amor"},
+  {q:"¿Qué cosa pequeña hago yo que te hace sentir amado/a aunque quizás nunca te lo he dicho?",c:"Amor"},
+  {q:"¿Qué es lo que más difícil te resulta pedirme cuando más lo necesitas?",c:"Amor"},
+  {q:"¿Cuál es la forma en que te demuestro amor que más valoras?",c:"Amor"},
+  {q:"¿Hay algo que quieras que hagamos juntos que nunca me has propuesto?",c:"Amor"},
+  {q:"¿Qué parte de mí te costó más trabajo entender o aceptar al principio?",c:"Amor"},
+  {q:"¿Cuándo te sientes más conectado/a conmigo — en qué momento o situación específica?",c:"Amor"},
+  {q:"¿Hay algo que sientes que me estás 'aguantando' y nunca me has dicho?",c:"Amor"},
+  {q:"¿Qué crees que es lo más difícil que hemos superado juntos hasta ahora?",c:"Amor"},
+  {q:"¿Cuál es el momento de nuestra relación del que más orgulloso/a te sientes?",c:"Amor"},
+  {q:"¿Qué es lo que más quieres que yo entienda de cómo te sientes amado/a?",c:"Amor"},
+  {q:"¿Cuál es tu mayor miedo sobre el futuro de nuestra relación?",c:"Amor"},
+  {q:"¿Qué es lo que más me agradeces a mí — algo que hice o dejé de hacer — que cambió algo en ti?",c:"Amor"},
+  {q:"¿Cuál es la cosa más bonita que alguien te ha dicho en tu vida y por qué todavía la recuerdas?",c:"Amor"},
+  {q:"¿Qué es lo que quieres que nuestra relación le enseñe a las personas que nos rodean?",c:"Amor"},
+  {q:"¿Cuál es el sueño que tienes guardado hace años al que nunca le has dado una oportunidad real?",c:"Sueños"},
+  {q:"Si el dinero y el tiempo no fueran un obstáculo, ¿qué estarías haciendo con tu vida ahora mismo?",c:"Sueños"},
+  {q:"¿Hay un talento tuyo que sientes que el mundo nunca ha visto del todo?",c:"Sueños"},
+  {q:"¿En qué parte de tu vida sientes que aún no has sido tan valiente como quisieras?",c:"Sueños"},
+  {q:"¿Cuál es la versión de ti mismo/a en 10 años que más te emociona imaginar?",c:"Sueños"},
+  {q:"¿Qué harías profesionalmente si supieras con certeza que ibas a tener éxito?",c:"Sueños"},
+  {q:"¿Cuál es la cosa que has creado o construido de la que más orgulloso/a te sientes?",c:"Sueños"},
+  {q:"¿Hay algo en lo que eres bueno/a que nunca te permitiste llamar talento?",c:"Sueños"},
+  {q:"¿Hay algo que quieras crear, construir o dejar en el mundo antes de morir?",c:"Propósito"},
+  {q:"¿Qué le daría sentido completo a tu vida que aún sientes que te falta?",c:"Propósito"},
+  {q:"¿Crees que hay algo para lo cual naciste específicamente? ¿Lo estás haciendo?",c:"Propósito"},
+  {q:"¿Qué es lo que quieres que la gente sienta cuando piense en ti después de que no estés?",c:"Propósito"},
+  {q:"¿Qué es lo que más lamentarías no haber intentado si miras tu vida a los 80 años?",c:"Propósito"},
+  {q:"¿Cuándo fue la última vez que hiciste algo completamente desinteresado por alguien y cómo te hizo sentir?",c:"Propósito"},
+  {q:"¿Cuándo fue la última vez que estuviste tan metido/a en algo que perdiste la noción del tiempo?",c:"Propósito"},
+  {q:"¿Cuál es el valor en el que no transiges sin importar qué?",c:"Identidad"},
+  {q:"¿Qué parte de tu personalidad sientes que la gente malentiende constantemente?",c:"Identidad"},
+  {q:"¿Hubo una experiencia que te cambió tan profundamente que sientes que eres una persona diferente desde entonces?",c:"Identidad"},
+  {q:"¿Qué es lo que más te enorgullece de quien eres hoy, más allá de logros externos?",c:"Identidad"},
+  {q:"¿Cómo sería la persona que quieres ser en 5 años a nivel de carácter, no de logros?",c:"Identidad"},
+  {q:"¿Hay algo que hiciste en el pasado que todavía te pesa y no has podido perdonarte del todo?",c:"Identidad"},
+  {q:"¿Qué crees que dice de ti la forma en que tratas a los desconocidos?",c:"Identidad"},
+  {q:"¿Hay algo en lo que tus acciones no están completamente alineadas con lo que crees que es correcto?",c:"Identidad"},
+  {q:"¿Cuál es el hábito secreto que tienes que consideras completamente tuyo?",c:"Identidad"},
+  {q:"¿Qué es lo que más te avergüenza admitir que te gusta?",c:"Identidad"},
+  {q:"¿Qué parte de quien eres hoy existe porque alguien creyó en ti cuando tú no lo hacías?",c:"Identidad"},
+  {q:"Si pudieras darle un mensaje a la versión de ti de hace 10 años, ¿qué le dirías que necesitaba escuchar con urgencia?",c:"Identidad"},
+  {q:"¿Cuál es la experiencia que has tenido en tu vida que nunca podrás explicar completamente con palabras?",c:"Aventura"},
+  {q:"¿Qué es lo más impulsivo que has hecho en tu vida y de qué te arrepientes menos?",c:"Aventura"},
+  {q:"¿Cuál es el lugar en el mundo donde has sentido que perteneces más?",c:"Aventura"},
+  {q:"¿Hay alguna experiencia que quieras vivir antes de morir que te parece demasiado grande para contársela a la gente?",c:"Aventura"},
+  {q:"¿Cuál es el viaje que más te ha cambiado — físico o interno — y qué te llevaste de él?",c:"Aventura"},
+  {q:"¿Qué harías mañana si supieras que no hay consecuencias?",c:"Aventura"},
+  {q:"¿Cuál es el momento que más te imaginas vivir conmigo que todavía no hemos tenido?",c:"Futuro"},
+  {q:"¿Cómo te imaginas que seremos juntos en 20 años?",c:"Futuro"},
+  {q:"¿Qué es lo que más quieres que yo recuerde de esta etapa de nuestra vida juntos?",c:"Futuro"},
+  {q:"¿Cuál es la tradición que quisieras que siempre tuviéramos juntos, sin importar qué pase?",c:"Futuro"},
+  {q:"Si tuviéramos que vivir en otro país por el resto de nuestras vidas, ¿cuál elegirías y por qué?",c:"Futuro"},
+  {q:"¿Qué es lo que más esperas de esta relación que todavía no hemos vivido?",c:"Futuro"},
+  {q:"¿Crees en algo más grande que tú — Dios, universo, destino — y cómo eso afecta tus decisiones?",c:"Valores"},
+  {q:"¿Cuándo has sentido que la vida te estaba diciendo algo específico?",c:"Valores"},
+  {q:"¿Qué es lo que más te cuesta aceptar sobre la vida que no puedes controlar?",c:"Valores"},
+  {q:"¿Hay algún ritual o hábito que te reconecta contigo mismo/a cuando todo se siente caótico?",c:"Valores"},
+  {q:"¿Cuál es tu relación con el dinero — te genera angustia, seguridad, indiferencia — y de dónde viene eso?",c:"Valores"},
+  {q:"¿Tienes alguna opinión que nunca dices en voz alta porque sabes que incomoda a la gente?",c:"Valores"},
+  {q:"¿Hay algo en lo que crees profundamente que va contra lo que la mayoría de la gente que te rodea piensa?",c:"Valores"},
+  {q:"¿Qué comprende muy poca gente sobre cómo ves el mundo?",c:"Valores"},
+  {q:"¿Cuál es la pérdida más grande que has tenido y qué parte de esa persona o cosa todavía llevas contigo?",c:"Pérdidas"},
+  {q:"¿Hay algo que perdiste — una oportunidad, una persona, una versión de ti — que todavía no has soltado del todo?",c:"Pérdidas"},
+  {q:"¿Cómo cambió tu forma de ver la vida la primera vez que enfrentaste la muerte de alguien cercano?",c:"Pérdidas"},
+  {q:"¿Cuándo fue la época más oscura de tu vida y qué fue lo que te sacó de ahí?",c:"Pérdidas"},
+  {q:"¿Cuál es el error del que más has aprendido en tu vida?",c:"Pérdidas"},
+  {q:"¿Cuál es la cosa más pequeña de tu vida cotidiana por la que sientes gratitud profunda pero rara vez lo dices?",c:"Gratitud"},
+  {q:"¿Cuál es la persona fuera de tu familia que más ha influido en quien eres hoy?",c:"Gratitud"},
+  {q:"¿Hay alguien a quien nunca le agradeciste algo importante que hizo por ti?",c:"Gratitud"},
+  {q:"¿Cuál es el día de tu vida que repetirías exactamente igual si pudieras?",c:"Gratitud"},
+  {q:"¿Qué pequeño detalle del día a día te da una alegría que parece desproporcionada?",c:"Gratitud"},
+  {q:"¿Qué es lo que más valoras de que existamos los dos en la misma época y el mismo lugar?",c:"Gratitud"},
+];
+
+const PHRASES=[
+  [0,"Apenas comenzamos…"],[10,"Dando los primeros pasos 🌱"],
+  [20,"Conociendo la superficie 🌊"],[30,"Entrando a aguas profundas…"],
+  [40,"Compartiendo lo que importa 💛"],[50,"Llegamos a la mitad, qué bonito 🌙"],
+  [60,"Esto se pone cada vez más real 💫"],[70,"Nos conocemos de verdad 🌺"],
+  [80,"Pocas personas se conocen tanto 🔥"],[90,"Casi en el fondo del alma 🌌"],
+  [100,"Nos conocemos de alma a alma ✨"]
+];
+
+// ── Init Firebase directamente ──
+const app = initializeApp({ databaseURL: DB_URL });
+const db  = getDatabase(app);
+
+let S    = null;
+let who  = localStorage.getItem('nosotros_who') || null;
+
+const $= id => document.getElementById(id);
+
+function setSync(status, txt){
+  $('sync-pill').className = 'sync-pill ' + status;
+  $('sync-txt').textContent = txt;
+}
+
+function phrase(p){
+  let t=PHRASES[0][1];
+  for(const[n,v] of PHRASES) if(p>=n) t=v;
+  return t;
+}
+
+// ── Quién soy ──
+window.setWho = w => {
+  who = w;
+  localStorage.setItem('nosotros_who', w);
+  renderWho();
+  if(S) renderAnswers();
+};
+
+function renderWho(){
+  $('btn-Melissa').className  = 'who-btn'+(who==='Melissa'  ? ' active-Melissa'  : '');
+  $('btn-david').className = 'who-btn'+(who==='david' ? ' active-david' : '');
+  $('who-status').textContent = who
+    ? 'Respondiendo como '+(who==='Melissa'?'Melissa':'David')
+    : 'Elige quién eres';
+}
+
+// ── Firebase listener — todo parte de aquí ──
+onValue(ref(db,'state'), snap => {
+  const val = snap.val();
+  if(!val){
+    // Primera vez: inicializar estado
+    const idx = randIdx([]);
+    set(ref(db,'state'), {
+      idx, used:[idx], lastTime:Date.now(),
+      pending:true, history:[], aMelissa:'', aDavid:''
+    });
+    return;
+  }
+  S = val;
+  if(!S.history) S.history = [];
+  setSync('connected','Sincronizado ✓');
+  renderAll();
+}, err => {
+  setSync('error','Error de conexión');
+  console.error(err);
+});
+
+function randIdx(used){
+  const s = new Set(used||[]);
+  const a = QS.map((_,i)=>i).filter(i=>!s.has(i));
+  return a.length ? a[Math.floor(Math.random()*a.length)] : null;
+}
+
+function renderAll(){
+  renderProgress();
+  renderQuestion();
+  renderAnswers();
+  renderHistory();
+}
+
+function renderProgress(){
+  const done=S.history.length, total=QS.length;
+  const pct=Math.round(done/total*100);
+  $('know-pct').innerHTML=pct+'<span>%</span>';
+  $('know-fill').style.width=pct+'%';
+  $('know-phrase').textContent=phrase(pct);
+  $('know-ans').textContent=done+(done===1?' pregunta respondida':' preguntas respondidas');
+  $('know-rem').textContent=(total-done)+' restantes';
+}
+
+function renderQuestion(){
+  const i=S.idx;
+  if(i===null){
+    $('q-text').textContent='¡Completaron las 100 preguntas! Se conocen de alma a alma 🎉';
+    $('q-tag').textContent=''; $('q-num').textContent='¡Completado!';
+    return;
+  }
+  const q=QS[i], num=(S.used||[]).indexOf(i)+1;
+  $('q-text').textContent=q.q;
+  $('q-tag').textContent=q.c;
+  $('q-num').textContent='Pregunta #'+num+' de 100';
+}
+
+function renderAnswers(){
+  if(!S) return;
+  const nw=$('Melissa-wrap'), dw=$('david-wrap');
+
+  if(who==='Melissa'){
+    nw.innerHTML=`<textarea id="a-Melissa" placeholder="Tu respuesta…"></textarea>`;
+    $('a-Melissa').value=S.aMelissa||'';
+    $('card-Melissa').className='ans-card mine';
+    dw.innerHTML=S.aDavid
+      ?`<div class="their-answer">${S.aDavid}</div>`
+      :`<div class="their-answer empty">David aún no ha respondido…</div>`;
+    $('card-david').className='ans-card theirs';
+  } else if(who==='david'){
+    dw.innerHTML=`<textarea id="a-david" placeholder="Tu respuesta…"></textarea>`;
+    $('a-david').value=S.aDavid||'';
+    $('card-david').className='ans-card mine';
+    nw.innerHTML=S.aMelissa
+      ?`<div class="their-answer">${S.aMelissa}</div>`
+      :`<div class="their-answer empty">Melissa aún no ha respondido…</div>`;
+    $('card-Melissa').className='ans-card theirs';
+  } else {
+    // nadie elegido — mostrar ambos como lectura
+    nw.innerHTML=S.aMelissa?`<div class="their-answer">${S.aMelissa}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
+    dw.innerHTML=S.aDavid?`<div class="their-answer">${S.aDavid}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
+    $('card-Melissa').className='ans-card';
+    $('card-david').className='ans-card';
+  }
+}
+
+window.save = () => {
+  if(!S){ showToast('Sin conexión'); return; }
+  if(!who){ showToast('Primero elige quién eres'); return; }
+  const ta = $(who==='Melissa'?'a-Melissa':'a-david');
+  if(!ta){ showToast('Campo no encontrado'); return; }
+  const ans = ta.value.trim();
+  if(!ans){ showToast('Escribe tu respuesta primero'); return; }
+
+  const ns = {...S};
+  if(who==='Melissa') ns.aMelissa=ans; else ns.aDavid=ans;
+
+  // Si los dos ya respondieron → al historial
+  if(ns.aMelissa && ns.aDavid && ns.pending){
+    const q=QS[ns.idx];
+    const entry={
+      question:q.q, category:q.c,
+      aMelissa:ns.aMelissa, aDavid:ns.aDavid,
+      date:new Date().toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}),
+      ts:Date.now()
+    };
+    const h=[...(ns.history||[])];
+    const ex=h.findIndex(x=>x.question===q.q);
+    if(ex>=0) h[ex]=entry; else h.unshift(entry);
+    ns.history=h;
+    ns.pending=false;
+  }
+
+  set(ref(db,'state'), ns).then(()=>{
+    const both = ns.aMelissa && ns.aDavid;
+    showToast(both ? '✓ ¡Los dos respondieron!' : '✓ Respuesta guardada — esperando al otro');
+  });
+};
+
+window.skip = () => {
+  if(!S){ showToast('Sin conexión'); return; }
+  if((S.aMelissa||S.aDavid) && !confirm('¿Siguiente pregunta? Las respuestas actuales se perderán.')) return;
+  const used=[...(S.used||[])];
+  const idx=randIdx(used);
+  if(idx!==null) used.push(idx);
+  set(ref(db,'state'),{...S, idx, used, lastTime:Date.now(), pending:true, aMelissa:'', aDavid:''});
+};
+
+function renderHistory(){
+  const sec=$('hist-sec'), list=$('hist-list');
+  const hist=S.history||[];
+  if(!hist.length){sec.style.display='none';return;}
+  sec.style.display='block';
+  list.innerHTML=hist.map(h=>`
+    <div class="hist-item">
+      <div class="hist-q">"${h.question}"</div>
+      <div class="hist-ans">
+        ${h.aMelissa  ?`<b>Melissa:</b> ${h.aMelissa}<br/>`:''}
+        ${h.aDavid ?`<b>David:</b> ${h.aDavid}`:''}
+      </div>
+      <div class="hist-meta">${h.date||''} · ${h.category||''}</div>
+    </div>`).join('');
+}
+
+// ── Timer ──
+setInterval(()=>{
+  if(!S){ $('t-val').textContent='--:--:--'; return; }
+  const rem=Math.max(0,(S.lastTime||Date.now())+INTERVAL-Date.now());
+  const h=Math.floor(rem/3600000),m=Math.floor(rem%3600000/60000),sc=Math.floor(rem%60000/1000);
+  $('t-val').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(sc).padStart(2,'0');
+  $('t-fill').style.width=(S.pending?100:Math.min(100,(INTERVAL-rem)/INTERVAL*100))+'%';
+  if(!S.pending && rem===0) window.skip();
+},1000);
+
+function showToast(msg){
+  const t=$('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2700);
+}
+
+// ── Boot ──
+document.addEventListener('DOMContentLoaded',()=>{
+  renderWho();
+  setSyncStatus('','Conectando…');
+});
+
+function setSyncStatus(s,t){ setSync(s,t); }
+</script>
+</body>
+</html>
