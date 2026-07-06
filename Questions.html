@@ -36,7 +36,7 @@ main{width:100%;max-width:620px;padding:0 1.25rem 5rem}
 .who-label{font-size:.73rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;flex-shrink:0}
 .who-btns{display:flex;gap:.5rem}
 .who-btn{font-family:var(--fb);font-size:.82rem;font-weight:500;cursor:pointer;border:1px solid var(--border);border-radius:8px;padding:.38rem .9rem;background:transparent;color:var(--muted);transition:all .15s}
-.who-btn.active-Melissa{background:var(--rose);color:#fff;border-color:var(--rose)}
+.who-btn.active-Annie{background:var(--rose);color:#fff;border-color:var(--rose)}
 .who-btn.active-david{background:var(--purple);color:#fff;border-color:var(--purple)}
 .who-btn:hover{opacity:.85}
 
@@ -101,7 +101,7 @@ button:active{transform:scale(.97)}
 <body>
 
 <header>
-  <span class="ornament">✦Melissa y David✦</span>
+  <span class="ornament">✦Annie y David✦</span>
   <h1>Nosotros</h1>
   <p>preguntas para conocernos de verdad</p>
 </header>
@@ -118,7 +118,7 @@ button:active{transform:scale(.97)}
   <div class="who-card">
     <span class="who-label">¿Quién eres?</span>
     <div class="who-btns">
-      <button class="who-btn" id="btn-Melissa"  onclick="setWho('Melissa')">💜 Melissa</button>
+      <button class="who-btn" id="btn-Annie"  onclick="setWho('Annie')">💜 Annie</button>
       <button class="who-btn" id="btn-david" onclick="setWho('david')">🖤 David</button>
     </div>
     <span style="font-size:.75rem;color:var(--muted);margin-left:auto" id="who-status"></span>
@@ -154,9 +154,9 @@ button:active{transform:scale(.97)}
   </div>
 
   <div class="ans-grid">
-    <div class="ans-card" id="card-Melissa">
-      <div class="ans-who"><span class="dot"></span> Melissa</div>
-      <div id="Melissa-wrap"></div>
+    <div class="ans-card" id="card-Annie">
+      <div class="ans-who"><span class="dot"></span> Annie</div>
+      <div id="Annie-wrap"></div>
     </div>
     <div class="ans-card" id="card-david">
       <div class="ans-who"><span class="dot b"></span> David</div>
@@ -183,7 +183,7 @@ import { initializeApp }                            from "https://www.gstatic.co
 import { getDatabase, ref, set, onValue }           from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 // ── CONFIG — URL fija, no necesitan configurar nada ──
-const DB_URL = "https://melissa-39fff-default-rtdb.firebaseio.com/";
+const DB_URL = "https://Annie-39fff-default-rtdb.firebaseio.com/";
 const INTERVAL = 12 * 60 * 60 * 1000;
 
 const QS = [
@@ -324,10 +324,10 @@ window.setWho = w => {
 };
 
 function renderWho(){
-  $('btn-Melissa').className  = 'who-btn'+(who==='Melissa'  ? ' active-Melissa'  : '');
+  $('btn-Annie').className  = 'who-btn'+(who==='Annie'  ? ' active-Annie'  : '');
   $('btn-david').className = 'who-btn'+(who==='david' ? ' active-david' : '');
   $('who-status').textContent = who
-    ? 'Respondiendo como '+(who==='Melissa'?'Melissa':'David')
+    ? 'Respondiendo como '+(who==='Annie'?'Annie':'David')
     : 'Elige quién eres';
 }
 
@@ -339,7 +339,7 @@ onValue(ref(db,'state'), snap => {
     const idx = randIdx([]);
     set(ref(db,'state'), {
       idx, used:[idx], lastTime:Date.now(),
-      pending:true, history:[], aMelissa:'', aDavid:''
+      pending:true, history:[], aAnnie:'', aDavid:''
     });
     return;
   }
@@ -390,12 +390,12 @@ function renderQuestion(){
 
 function renderAnswers(){
   if(!S) return;
-  const nw=$('Melissa-wrap'), dw=$('david-wrap');
+  const nw=$('Annie-wrap'), dw=$('david-wrap');
 
-  if(who==='Melissa'){
-    nw.innerHTML=`<textarea id="a-Melissa" placeholder="Tu respuesta…"></textarea>`;
-    $('a-Melissa').value=S.aMelissa||'';
-    $('card-Melissa').className='ans-card mine';
+  if(who==='Annie'){
+    nw.innerHTML=`<textarea id="a-Annie" placeholder="Tu respuesta…"></textarea>`;
+    $('a-Annie').value=S.aAnnie||'';
+    $('card-Annie').className='ans-card mine';
     dw.innerHTML=S.aDavid
       ?`<div class="their-answer">${S.aDavid}</div>`
       :`<div class="their-answer empty">David aún no ha respondido…</div>`;
@@ -404,15 +404,15 @@ function renderAnswers(){
     dw.innerHTML=`<textarea id="a-david" placeholder="Tu respuesta…"></textarea>`;
     $('a-david').value=S.aDavid||'';
     $('card-david').className='ans-card mine';
-    nw.innerHTML=S.aMelissa
-      ?`<div class="their-answer">${S.aMelissa}</div>`
-      :`<div class="their-answer empty">Melissa aún no ha respondido…</div>`;
-    $('card-Melissa').className='ans-card theirs';
+    nw.innerHTML=S.aAnnie
+      ?`<div class="their-answer">${S.aAnnie}</div>`
+      :`<div class="their-answer empty">Annie aún no ha respondido…</div>`;
+    $('card-Annie').className='ans-card theirs';
   } else {
     // nadie elegido — mostrar ambos como lectura
-    nw.innerHTML=S.aMelissa?`<div class="their-answer">${S.aMelissa}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
+    nw.innerHTML=S.aAnnie?`<div class="their-answer">${S.aAnnie}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
     dw.innerHTML=S.aDavid?`<div class="their-answer">${S.aDavid}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
-    $('card-Melissa').className='ans-card';
+    $('card-Annie').className='ans-card';
     $('card-david').className='ans-card';
   }
 }
@@ -420,20 +420,20 @@ function renderAnswers(){
 window.save = () => {
   if(!S){ showToast('Sin conexión'); return; }
   if(!who){ showToast('Primero elige quién eres'); return; }
-  const ta = $(who==='Melissa'?'a-Melissa':'a-david');
+  const ta = $(who==='Annie'?'a-Annie':'a-david');
   if(!ta){ showToast('Campo no encontrado'); return; }
   const ans = ta.value.trim();
   if(!ans){ showToast('Escribe tu respuesta primero'); return; }
 
   const ns = {...S};
-  if(who==='Melissa') ns.aMelissa=ans; else ns.aDavid=ans;
+  if(who==='Annie') ns.aAnnie=ans; else ns.aDavid=ans;
 
   // Si los dos ya respondieron → al historial
-  if(ns.aMelissa && ns.aDavid && ns.pending){
+  if(ns.aAnnie && ns.aDavid && ns.pending){
     const q=QS[ns.idx];
     const entry={
       question:q.q, category:q.c,
-      aMelissa:ns.aMelissa, aDavid:ns.aDavid,
+      aAnnie:ns.aAnnie, aDavid:ns.aDavid,
       date:new Date().toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}),
       ts:Date.now()
     };
@@ -445,18 +445,18 @@ window.save = () => {
   }
 
   set(ref(db,'state'), ns).then(()=>{
-    const both = ns.aMelissa && ns.aDavid;
+    const both = ns.aAnnie && ns.aDavid;
     showToast(both ? '✓ ¡Los dos respondieron!' : '✓ Respuesta guardada — esperando al otro');
   });
 };
 
 window.skip = () => {
   if(!S){ showToast('Sin conexión'); return; }
-  if((S.aMelissa||S.aDavid) && !confirm('¿Siguiente pregunta? Las respuestas actuales se perderán.')) return;
+  if((S.aAnnie||S.aDavid) && !confirm('¿Siguiente pregunta? Las respuestas actuales se perderán.')) return;
   const used=[...(S.used||[])];
   const idx=randIdx(used);
   if(idx!==null) used.push(idx);
-  set(ref(db,'state'),{...S, idx, used, lastTime:Date.now(), pending:true, aMelissa:'', aDavid:''});
+  set(ref(db,'state'),{...S, idx, used, lastTime:Date.now(), pending:true, aAnnie:'', aDavid:''});
 };
 
 function renderHistory(){
@@ -468,7 +468,7 @@ function renderHistory(){
     <div class="hist-item">
       <div class="hist-q">"${h.question}"</div>
       <div class="hist-ans">
-        ${h.aMelissa  ?`<b>Melissa:</b> ${h.aMelissa}<br/>`:''}
+        ${h.aAnnie  ?`<b>Annie:</b> ${h.aAnnie}<br/>`:''}
         ${h.aDavid ?`<b>David:</b> ${h.aDavid}`:''}
       </div>
       <div class="hist-meta">${h.date||''} · ${h.category||''}</div>
