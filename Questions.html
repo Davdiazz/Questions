@@ -100,11 +100,11 @@ button:active{transform:scale(.97)}
 </head>
 <body>
 
-<!--header>
-  <span class="ornament">✦Annie y David✦</span>
-  <h1>Nosotros</h1>
-  <p>preguntas para conocernos de verdad</p>
-</header-->
+<header>
+  <span class="ornament"></span>
+  <h1></h1>
+  <p></p>
+</header>
 
 <div class="sync-bar">
   <span class="sync-pill" id="sync-pill">
@@ -183,8 +183,9 @@ import { initializeApp }                            from "https://www.gstatic.co
 import { getDatabase, ref, set, onValue }           from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 // ── CONFIG — URL fija, no necesitan configurar nada ──
-const DB_URL = "https://Melissa-39fff-default-rtdb.firebaseio.com/";
+const DB_URL = "https://annie-121f8-default-rtdb.firebaseio.com/";
 const INTERVAL = 12 * 60 * 60 * 1000;
+
 const QS = [
   {q:"¿Cuál es el recuerdo más vívido de tu infancia que todavía puedes sentir con todos los sentidos?",c:"Infancia"},
   {q:"¿Hubo un momento en tu niñez en que te sentiste completamente solo/a? ¿Cómo lo superaste?",c:"Infancia"},
