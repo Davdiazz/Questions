@@ -16,12 +16,10 @@
 }
 html{font-size:16px}
 body{background:var(--cream);color:var(--ink);font-family:var(--fb);min-height:100vh;display:flex;flex-direction:column;align-items:center}
-
 header{text-align:center;padding:2.5rem 1rem 1.5rem;width:100%}
 .ornament{font-size:1.1rem;color:var(--rose);letter-spacing:.5rem;display:block;margin-bottom:.5rem}
 header h1{font-family:var(--fd);font-size:clamp(1.9rem,5vw,2.7rem);font-weight:600;letter-spacing:-.02em}
 header p{margin-top:.35rem;font-size:.83rem;color:var(--muted);font-weight:300;letter-spacing:.06em}
-
 .sync-bar{width:100%;max-width:620px;padding:0 1.25rem;margin-bottom:.6rem}
 .sync-pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;padding:.3rem .75rem;border-radius:99px;border:1px solid var(--border);color:var(--muted);background:var(--card)}
 .sync-dot{width:7px;height:7px;border-radius:50%;background:#555;flex-shrink:0}
@@ -29,9 +27,7 @@ header p{margin-top:.35rem;font-size:.83rem;color:var(--muted);font-weight:300;l
 .sync-pill.connected{color:#4caf50;border-color:#4caf5044}
 .sync-pill.error .sync-dot{background:#e57373}
 .sync-pill.error{color:#e57373;border-color:#e5737344}
-
 main{width:100%;max-width:620px;padding:0 1.25rem 5rem}
-
 .who-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .who-label{font-size:.73rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;flex-shrink:0}
 .who-btns{display:flex;gap:.5rem}
@@ -39,7 +35,6 @@ main{width:100%;max-width:620px;padding:0 1.25rem 5rem}
 .who-btn.active-Annie{background:var(--rose);color:#fff;border-color:var(--rose)}
 .who-btn.active-david{background:var(--purple);color:#fff;border-color:var(--purple)}
 .who-btn:hover{opacity:.85}
-
 .know-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.5rem 1.2rem;margin-bottom:1.2rem;position:relative;overflow:hidden}
 .know-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--purple))}
 .know-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:.8rem}
@@ -50,32 +45,38 @@ main{width:100%;max-width:620px;padding:0 1.25rem 5rem}
 .track{height:6px;background:#1a001a;border-radius:99px;overflow:hidden}
 .fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--purple));border-radius:99px;transition:width .7s cubic-bezier(.4,0,.2,1)}
 .know-sub{margin-top:.5rem;font-size:.74rem;color:var(--muted);display:flex;justify-content:space-between}
-
 .timer-row{display:flex;align-items:center;gap:.75rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.6rem 1rem;margin-bottom:1.2rem}
 .timer-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:500;white-space:nowrap}
 .t-track{flex:1;height:4px;background:#1a001a;border-radius:99px;overflow:hidden}
 .t-fill{height:100%;background:var(--rose);border-radius:99px;transition:width .5s}
 .timer-val{font-family:var(--fd);font-size:.93rem;color:var(--rose);font-weight:600;min-width:68px;text-align:right}
-
 .q-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem 1.6rem 1.5rem;margin-bottom:1.1rem;position:relative;overflow:hidden}
 .q-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--purple))}
 .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
 .q-num{font-size:.72rem;color:var(--rose);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
 .q-tag{font-size:.7rem;background:var(--rose-lt);color:var(--rose-dk);padding:.2rem .65rem;border-radius:99px;font-weight:500;border:1px solid #3a003a}
 .q-text{font-family:var(--fd);font-size:clamp(1.12rem,3vw,1.38rem);line-height:1.62;color:var(--ink)}
-
 .ans-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem}
 @media(max-width:460px){.ans-grid{grid-template-columns:1fr}}
 .ans-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem .95rem;transition:border-color .2s}
 .ans-card.mine{border-color:var(--rose)}
 .ans-card.theirs{border-color:var(--purple)}
+.ans-card.waiting{border-color:#2a2a2a}
 .ans-who{font-size:.69rem;font-weight:500;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.35rem}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--rose);display:inline-block;flex-shrink:0}
 .dot.b{background:var(--purple)}
 textarea{width:100%;min-height:80px;resize:vertical;border:1px solid var(--border);border-radius:8px;padding:.55rem .72rem;font-family:var(--fb);font-size:.87rem;color:var(--ink);background:#0a000a;line-height:1.5;outline:none;transition:border-color .15s}
 textarea:focus{border-color:var(--rose)}
-.their-answer{min-height:60px;font-size:.87rem;color:var(--muted);line-height:1.55;font-style:italic;padding:.4rem 0}
-.their-answer.empty{color:#444;font-size:.8rem}
+.their-answer{min-height:60px;font-size:.87rem;color:var(--muted);line-height:1.55;padding:.4rem 0}
+.their-answer.empty{color:#444;font-size:.8rem;font-style:italic}
+
+/* 🔒 Estado bloqueado — respuesta oculta */
+.locked-box{min-height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:.6rem;border:1px dashed #333;border-radius:8px;text-align:center}
+.locked-box .lock-icon{font-size:1.4rem}
+.locked-box .lock-txt{font-size:.75rem;color:#555;line-height:1.4}
+/* ✅ Revelado — animación suave */
+.revealed{animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
 .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
 button{font-family:var(--fb);font-size:.84rem;font-weight:500;cursor:pointer;border:none;border-radius:8px;padding:.55rem 1.1rem;transition:opacity .15s,transform .1s}
@@ -84,7 +85,6 @@ button:active{transform:scale(.97)}
 .btn-p:hover{opacity:.87}
 .btn-s{background:var(--rose-lt);color:var(--rose-dk)}
 .btn-s:hover{opacity:.8}
-
 .hist-title{font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
 .hist-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .hist-item{border-left:2px solid var(--border);padding:.65rem .9rem;margin-bottom:.7rem;position:relative}
@@ -93,7 +93,6 @@ button:active{transform:scale(.97)}
 .hist-ans{font-size:.79rem;color:var(--muted);line-height:1.65}
 .hist-ans b{color:var(--ink)}
 .hist-meta{font-size:.68rem;color:#444;margin-top:.25rem}
-
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(14px);background:#222;color:#fff;border:1px solid var(--border);padding:.58rem 1.1rem;border-radius:99px;font-size:.82rem;opacity:0;transition:all .28s;pointer-events:none;z-index:200;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -118,7 +117,7 @@ button:active{transform:scale(.97)}
   <div class="who-card">
     <span class="who-label">¿Quién eres?</span>
     <div class="who-btns">
-      <button class="who-btn" id="btn-Annie"  onclick="setWho('Annie')">💜 Annie</button>
+      <button class="who-btn" id="btn-Annie" onclick="setWho('Annie')">💜 Annie</button>
       <button class="who-btn" id="btn-david" onclick="setWho('david')">🖤 David</button>
     </div>
     <span style="font-size:.75rem;color:var(--muted);margin-left:auto" id="who-status"></span>
@@ -179,11 +178,10 @@ button:active{transform:scale(.97)}
 <div class="toast" id="toast"></div>
 
 <script type="module">
-import { initializeApp }                            from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue }           from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-// ── CONFIG — URL fija, no necesitan configurar nada ──
-const DB_URL = "https://annie-121f8-default-rtdb.firebaseio.com/";
+const DB_URL  = "https://annie-121f8-default-rtdb.firebaseio.com/";
 const INTERVAL = 12 * 60 * 60 * 1000;
 
 const QS = [
@@ -295,27 +293,19 @@ const PHRASES=[
   [100,"Nos conocemos de alma a alma ✨"]
 ];
 
-// ── Init Firebase directamente ──
 const app = initializeApp({ databaseURL: DB_URL });
 const db  = getDatabase(app);
 
-let S    = null;
-let who  = localStorage.getItem('nosotros_who') || null;
-
-const $= id => document.getElementById(id);
+let S   = null;
+let who = localStorage.getItem('nosotros_who') || null;
+const $ = id => document.getElementById(id);
 
 function setSync(status, txt){
   $('sync-pill').className = 'sync-pill ' + status;
   $('sync-txt').textContent = txt;
 }
+function phrase(p){ let t=PHRASES[0][1]; for(const[n,v] of PHRASES) if(p>=n) t=v; return t; }
 
-function phrase(p){
-  let t=PHRASES[0][1];
-  for(const[n,v] of PHRASES) if(p>=n) t=v;
-  return t;
-}
-
-// ── Quién soy ──
 window.setWho = w => {
   who = w;
   localStorage.setItem('nosotros_who', w);
@@ -324,50 +314,36 @@ window.setWho = w => {
 };
 
 function renderWho(){
-  $('btn-Annie').className  = 'who-btn'+(who==='Annie'  ? ' active-Annie'  : '');
+  $('btn-Annie').className = 'who-btn'+(who==='Annie' ? ' active-Annie' : '');
   $('btn-david').className = 'who-btn'+(who==='david' ? ' active-david' : '');
   $('who-status').textContent = who
     ? 'Respondiendo como '+(who==='Annie'?'Annie':'David')
     : 'Elige quién eres';
 }
 
-// ── Firebase listener — todo parte de aquí ──
 onValue(ref(db,'state'), snap => {
   const val = snap.val();
   if(!val){
-    // Primera vez: inicializar estado
     const idx = randIdx([]);
-    set(ref(db,'state'), {
-      idx, used:[idx], lastTime:Date.now(),
-      pending:true, history:[], aAnnie:'', aDavid:''
-    });
+    set(ref(db,'state'),{ idx, used:[idx], lastTime:Date.now(), pending:true, history:[], aAnnie:'', aDavid:'' });
     return;
   }
   S = val;
   if(!S.history) S.history = [];
   setSync('connected','Sincronizado ✓');
   renderAll();
-}, err => {
-  setSync('error','Error de conexión');
-  console.error(err);
-});
+}, err => { setSync('error','Error de conexión'); console.error(err); });
 
 function randIdx(used){
-  const s = new Set(used||[]);
-  const a = QS.map((_,i)=>i).filter(i=>!s.has(i));
+  const s=new Set(used||[]);
+  const a=QS.map((_,i)=>i).filter(i=>!s.has(i));
   return a.length ? a[Math.floor(Math.random()*a.length)] : null;
 }
 
-function renderAll(){
-  renderProgress();
-  renderQuestion();
-  renderAnswers();
-  renderHistory();
-}
+function renderAll(){ renderProgress(); renderQuestion(); renderAnswers(); renderHistory(); }
 
 function renderProgress(){
-  const done=S.history.length, total=QS.length;
-  const pct=Math.round(done/total*100);
+  const done=S.history.length, total=QS.length, pct=Math.round(done/total*100);
   $('know-pct').innerHTML=pct+'<span>%</span>';
   $('know-fill').style.width=pct+'%';
   $('know-phrase').textContent=phrase(pct);
@@ -379,41 +355,83 @@ function renderQuestion(){
   const i=S.idx;
   if(i===null){
     $('q-text').textContent='¡Completaron las 100 preguntas! Se conocen de alma a alma 🎉';
-    $('q-tag').textContent=''; $('q-num').textContent='¡Completado!';
-    return;
+    $('q-tag').textContent=''; $('q-num').textContent='¡Completado!'; return;
   }
   const q=QS[i], num=(S.used||[]).indexOf(i)+1;
-  $('q-text').textContent=q.q;
-  $('q-tag').textContent=q.c;
+  $('q-text').textContent=q.q; $('q-tag').textContent=q.c;
   $('q-num').textContent='Pregunta #'+num+' de 100';
 }
 
+// ══════════════════════════════════════════════════════
+// LÓGICA CLAVE: la respuesta del otro se oculta hasta
+// que los DOS hayan guardado (S.pending === false).
+// Mientras pending === true, el otro ve un candado.
+// ══════════════════════════════════════════════════════
 function renderAnswers(){
   if(!S) return;
   const nw=$('Annie-wrap'), dw=$('david-wrap');
+  const bothDone = !S.pending; // true = los dos ya respondieron
 
-  if(who==='Annie'){
-    nw.innerHTML=`<textarea id="a-Annie" placeholder="Tu respuesta…"></textarea>`;
-    $('a-Annie').value=S.aAnnie||'';
-    $('card-Annie').className='ans-card mine';
-    dw.innerHTML=S.aDavid
-      ?`<div class="their-answer">${S.aDavid}</div>`
-      :`<div class="their-answer empty">David aún no ha respondido…</div>`;
-    $('card-david').className='ans-card theirs';
-  } else if(who==='david'){
-    dw.innerHTML=`<textarea id="a-david" placeholder="Tu respuesta…"></textarea>`;
-    $('a-david').value=S.aDavid||'';
-    $('card-david').className='ans-card mine';
-    nw.innerHTML=S.aAnnie
-      ?`<div class="their-answer">${S.aAnnie}</div>`
-      :`<div class="their-answer empty">Annie aún no ha respondido…</div>`;
-    $('card-Annie').className='ans-card theirs';
+  // ── Helper: caja bloqueada ──
+  const locked = name =>
+    `<div class="locked-box">
+      <span class="lock-icon">🔒</span>
+      <span class="lock-txt">${name} ya respondió.<br/>Guarda la tuya para ver su respuesta.</span>
+    </div>`;
+
+  // ── Helper: respuesta visible ──
+  const visible = (text, empty) => text
+    ? `<div class="their-answer revealed">${text}</div>`
+    : `<div class="their-answer empty">${empty}</div>`;
+
+  if(who === 'Annie'){
+    // Annie edita su campo
+    nw.innerHTML = `<textarea id="a-Annie" placeholder="Tu respuesta…"></textarea>`;
+    $('a-Annie').value = S.aAnnie || '';
+    $('card-Annie').className = 'ans-card mine';
+
+    // Campo de David: oculto si Annie aún no guardó, visible si los dos terminaron
+    if(bothDone){
+      dw.innerHTML = visible(S.aDavid, 'David no respondió esta vez.');
+      $('card-david').className = 'ans-card theirs';
+    } else if(S.aDavid){
+      // David ya guardó pero Annie no → candado
+      dw.innerHTML = locked('David');
+      $('card-david').className = 'ans-card waiting';
+    } else {
+      dw.innerHTML = `<div class="their-answer empty">David aún no ha respondido…</div>`;
+      $('card-david').className = 'ans-card waiting';
+    }
+
+  } else if(who === 'david'){
+    // David edita su campo
+    dw.innerHTML = `<textarea id="a-david" placeholder="Tu respuesta…"></textarea>`;
+    $('a-david').value = S.aDavid || '';
+    $('card-david').className = 'ans-card mine';
+
+    // Campo de Annie: oculto si David aún no guardó, visible si los dos terminaron
+    if(bothDone){
+      nw.innerHTML = visible(S.aAnnie, 'Annie no respondió esta vez.');
+      $('card-Annie').className = 'ans-card theirs';
+    } else if(S.aAnnie){
+      // Annie ya guardó pero David no → candado
+      nw.innerHTML = locked('Annie');
+      $('card-Annie').className = 'ans-card waiting';
+    } else {
+      nw.innerHTML = `<div class="their-answer empty">Annie aún no ha respondido…</div>`;
+      $('card-Annie').className = 'ans-card waiting';
+    }
+
   } else {
-    // nadie elegido — mostrar ambos como lectura
-    nw.innerHTML=S.aAnnie?`<div class="their-answer">${S.aAnnie}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
-    dw.innerHTML=S.aDavid?`<div class="their-answer">${S.aDavid}</div>`:`<div class="their-answer empty">Sin respuesta aún…</div>`;
-    $('card-Annie').className='ans-card';
-    $('card-david').className='ans-card';
+    // Nadie eligió quién es — solo lectura sin revelar
+    nw.innerHTML = bothDone && S.aAnnie
+      ? `<div class="their-answer">${S.aAnnie}</div>`
+      : `<div class="their-answer empty">Sin respuesta aún…</div>`;
+    dw.innerHTML = bothDone && S.aDavid
+      ? `<div class="their-answer">${S.aDavid}</div>`
+      : `<div class="their-answer empty">Sin respuesta aún…</div>`;
+    $('card-Annie').className = 'ans-card';
+    $('card-david').className = 'ans-card';
   }
 }
 
@@ -428,25 +446,22 @@ window.save = () => {
   const ns = {...S};
   if(who==='Annie') ns.aAnnie=ans; else ns.aDavid=ans;
 
-  // Si los dos ya respondieron → al historial
   if(ns.aAnnie && ns.aDavid && ns.pending){
     const q=QS[ns.idx];
     const entry={
-      question:q.q, category:q.c,
-      aAnnie:ns.aAnnie, aDavid:ns.aDavid,
+      question:q.q, category:q.c, aAnnie:ns.aAnnie, aDavid:ns.aDavid,
       date:new Date().toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}),
       ts:Date.now()
     };
     const h=[...(ns.history||[])];
     const ex=h.findIndex(x=>x.question===q.q);
     if(ex>=0) h[ex]=entry; else h.unshift(entry);
-    ns.history=h;
-    ns.pending=false;
+    ns.history=h; ns.pending=false;
   }
 
   set(ref(db,'state'), ns).then(()=>{
     const both = ns.aAnnie && ns.aDavid;
-    showToast(both ? '✓ ¡Los dos respondieron!' : '✓ Respuesta guardada — esperando al otro');
+    showToast(both ? '✓ ¡Los dos respondieron! Ahora pueden verse 👀' : '✓ Guardado — esperando que el otro responda 🔒');
   });
 };
 
@@ -468,14 +483,13 @@ function renderHistory(){
     <div class="hist-item">
       <div class="hist-q">"${h.question}"</div>
       <div class="hist-ans">
-        ${h.aAnnie  ?`<b>Annie:</b> ${h.aAnnie}<br/>`:''}
+        ${h.aAnnie ?`<b>Annie:</b> ${h.aAnnie}<br/>`:''}
         ${h.aDavid ?`<b>David:</b> ${h.aDavid}`:''}
       </div>
       <div class="hist-meta">${h.date||''} · ${h.category||''}</div>
     </div>`).join('');
 }
 
-// ── Timer ──
 setInterval(()=>{
   if(!S){ $('t-val').textContent='--:--:--'; return; }
   const rem=Math.max(0,(S.lastTime||Date.now())+INTERVAL-Date.now());
@@ -486,18 +500,11 @@ setInterval(()=>{
 },1000);
 
 function showToast(msg){
-  const t=$('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2700);
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ── Boot ──
-document.addEventListener('DOMContentLoaded',()=>{
-  renderWho();
-  setSyncStatus('','Conectando…');
-});
-
-function setSyncStatus(s,t){ setSync(s,t); }
+document.addEventListener('DOMContentLoaded',()=>{ renderWho(); setSync('','Conectando…'); });
 </script>
 </body>
 </html>
